@@ -1,0 +1,3 @@
+[submodule "quantumhack"]
+	path = quantumhack
+	url = https://github.com/jonibeach/quantumhack
