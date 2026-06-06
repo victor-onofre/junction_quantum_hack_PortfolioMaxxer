@@ -1,0 +1,51 @@
+cnot a_2 a_0
+cnot a_3 a_1
+cnot b_2 b_0
+cnot b_3 b_1
+cnot a_1 a_0
+cnot b_1 b_0
+toffoli a_0 b_0 c_3
+cnot a_1 a_0
+cnot b_1 b_0
+cnot c_2 c_3
+cnot c_3 c_4
+toffoli a_0 b_0 c_2
+toffoli a_1 b_1 c_3
+cnot a_2 a_0
+cnot b_2 b_0
+cnot c_3 c_4
+cnot a_3 a_1
+cnot b_3 b_1
+cnot c_2 c_3
+cnot a_1 a_0
+cnot b_1 b_0
+cnot a_3 a_2
+cnot b_3 b_2
+cnot c_0 c_2
+cnot c_1 c_3
+cnot c_2 c_4
+cnot c_3 c_5
+toffoli a_0 b_0 c_1
+cnot c_4 c_6
+cnot a_1 a_0
+cnot b_1 b_0
+cnot c_0 c_1
+toffoli a_2 b_2 c_3
+cnot c_1 c_2
+toffoli a_0 b_0 c_0
+cnot a_3 a_2
+cnot b_3 b_2
+toffoli a_1 b_1 c_1
+cnot c_1 c_2
+cnot c_0 c_1
+cnot c_2 c_3
+cnot c_3 c_4
+toffoli a_2 b_2 c_2
+toffoli a_3 b_3 c_3
+cnot c_3 c_4
+cnot c_2 c_3
+cnot c_4 c_6
+cnot c_3 c_5
+cnot c_2 c_4
+cnot c_1 c_3
+cnot c_0 c_2

@@ -1,0 +1,61 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+http_archive(
+    name = "argparse",
+    urls = ["https://github.com/p-ranav/argparse/archive/refs/tags/v3.0.zip"], 
+    strip_prefix = "argparse-3.0",
+    sha256 = "674e724c2702f0bfef1619161815257a407e1babce30d908327729fba6ce4124",
+    build_file = "argparse.BUILD",
+)
+
+GTEST_VERSION = "1.13.0"
+GTEST_SHA256 = "ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363"
+http_archive(
+    name = "gtest",
+    sha256 = GTEST_SHA256,
+    strip_prefix = "googletest-%s" % GTEST_VERSION,
+    urls = ["https://github.com/google/googletest/archive/refs/tags/v%s.tar.gz" % GTEST_VERSION],
+)
+
+# Used to build external deps that use different build systems
+http_archive(
+    name = "rules_foreign_cc",
+    sha256 = "476303bd0f1b04cc311fc258f1708a5f6ef82d3091e53fd1977fa20383425a6a",
+    strip_prefix = "rules_foreign_cc-0.10.1",
+    url = "https://github.com/bazelbuild/rules_foreign_cc/releases/download/0.10.1/rules_foreign_cc-0.10.1.tar.gz",
+)
+
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+
+# This sets up some common toolchains for building targets. For more details, please see
+# https://bazelbuild.github.io/rules_foreign_cc/0.10.1/flatten.html#rules_foreign_cc_dependencies
+rules_foreign_cc_dependencies()
+
+
+GMP_SHA256 = "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898"
+http_archive(
+    name = "gmp",
+    urls = [
+        "https://ftpmirror.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz",
+        "https://mirrors.ibiblio.org/gnu/gmp/gmp-6.3.0.tar.xz",
+        "https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz",
+    ],
+    strip_prefix = "gmp-6.3.0",
+    sha256 = GMP_SHA256,
+    build_file = "gmp.BUILD"
+)
+
+
+NTL_SHA256 = "210d06c31306cbc6eaf6814453c56c776d9d8e8df36d74eb306f6a523d1c6a8a"
+http_archive(
+    name = "ntl",
+    url = "https://libntl.org/ntl-11.5.1.tar.gz",
+    sha256 = NTL_SHA256,
+    strip_prefix = "ntl-11.5.1/",
+    build_file = "ntl.BUILD",
+    # Various hacks:
+    # (1) the configure script is in the src directory
+    # (2) --prefix= is actually DESTDIR= but this can't be set by configure
+    patch_cmds = ["echo 'cd src && ./configure PREFIX= && sed -i s+DESTDIR=+DESTDIR=$1+g makefile' > configure && chmod +x configure"],
+)

@@ -1,0 +1,11 @@
+# From "Regular and irregular progressive edge-growth tanner graphs"
+# Xiao-Yu Hu; E. Eleftheriou; D.M. Arnold
+# 2005
+# Note that that paper uses the vertex-perspective, so we have to convert
+# to edge-perspective.
+# nodes
+2 3 4 5 15
+0.23802002 0.20997034 0.03492002 0.13631994 0.38076968
+# checks
+8
+1.0

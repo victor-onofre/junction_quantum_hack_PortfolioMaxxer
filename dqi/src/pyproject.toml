@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 100
+target_version = ['py312']
+skip-string-normalization = true
+skip-magic-trailing-comma = true
+
+[tool.isort]
+profile = 'black'
+order_by_type = false
+line_length = 100
+remove_redundant_aliases = true
+
+[tool.setuptools.packages.find]
+include = ["dqi*"]
+exclude = ["problem*"]
+
+[project]
+name = "dqi"
+version = "2025.10.09"
+dependencies = [
+    "qualtran@git+https://github.com/quantumlib/Qualtran#egg=a68adbb8709d8b63025dd9a7902008f4cbec22d7",
+    "pytest",
+    "pytest-xdist",
+    "black",
+    "galois",
+    "isort",
+    "tabulate",
+]

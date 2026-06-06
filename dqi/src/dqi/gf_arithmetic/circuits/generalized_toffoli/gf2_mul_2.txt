@@ -1,0 +1,17 @@
+# poly: x^2+x+1
+# The circuit is reported as a prefix of cnots followed by generalized toffolis.
+# The generalized toffolis are reported as 3 lists of comma seperated integers
+# where "0,1 0,1,3 2,5" means a toffoli whose first control is the xor of first two qubits of A
+# and the second control is the xor of qubits 0,1,3 of B and targets qubits 2 and 5 of C
+cnot a_1 a_0
+cnot b_1 b_0
+cnot b_1 b_0
+cnot a_1 a_0
+cnot c_0 c_1
+cnot c_1 c_0
+cnot c_1 c_0
+cnot c_0 c_1
+cnot c_1 c_0
+0,1 0,1 0
+1 1 1
+0 0 0,1
